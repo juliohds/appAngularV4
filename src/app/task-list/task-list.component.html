@@ -1,0 +1,30 @@
+<label for="">Name:</label>
+<input type="text" [(ngModel)]="task.name">
+<label for="">Value:</label>
+<input type="text" [(ngModel)]="task.value">
+<label for="">Date:</label>
+<input type="text" [(ngModel)]="task.date_launch">
+<br>
+<button type="button" (click)="add()">Adicionar na lista</button>
+<ul>
+  <!-- <li [id]="'list' + item.name" 
+      [style.color]="item.value > 5 ? 'green': 'red'" 
+      *ngFor="let item of tasks" [innerHtml]="(item.name | lowercase) + ' - ' + (item.value | formatCurrency:'en-US')">    
+  </li>
+
+  <li [id]="'list' + item.name" 
+      [ngClass]="{'item-green':item.value>5, 'item-red':item.value<5 }"
+      *ngFor="let item of tasks" [innerHtml]="item.name + ' - ' + item.value">    
+  </li> -->
+
+  <li *ngFor="let item of tasks" [myTask]="item">
+   {{
+     (item.name | lowercase) + ' - ' + 
+     (item.value | formatCurrency:'en-US') + ' - ' +    
+     (item.date_launch | formatDate)
+   }}
+  </li>
+
+  <p myTask></p>
+
+</ul>
